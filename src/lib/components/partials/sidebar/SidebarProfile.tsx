@@ -1,16 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
+import { useMenuUIContext } from "@/lib/contexts/MenuUIContext";
 import useIsMobile from "@/lib/hooks/useIsMobile";
-import SidebarProfileHeader from "@/lib/components/partials/sidebar/SidebarProfileHeader";
 import DropdownSwitchTheme from "@/lib/components/elements/DropdownSwitchTheme";
-
-// import MobileMenu from "./MobileMenu";
-// import MobileMenuButton from "./MobileMenuButton";
-// import ProfileHeader from "./ProfileHeader";
-// import Status from "../elements/Status";
-// import ThemeToggleButton from "../elements/ThemeToggleButton";
+import DropdownIconSwitchTheme from "@/lib/components/elements/DropdownIconSwitchTheme";
+import SidebarProfileHeader from "@/lib/components/partials/sidebar/SidebarProfileHeader";
+import SidebarMobileMenuButton from "@/lib/components/partials/sidebar/SidebarMobileMenuButton";
+import SidebarMobileMenu from "@/lib/components/partials/sidebar/SidebarMobileMenu";
 
 interface ISidebarProfile {
   isScrolled?: boolean;
@@ -20,6 +18,9 @@ export default function SidebarProfile({
   isScrolled = false,
 }: Readonly<ISidebarProfile>) {
   const isMobile = useIsMobile();
+  const menuUIContext = useMenuUIContext();
+
+  const { openMenu, setOpenMenu } = menuUIContext;
 
   const getImageSize = () => {
     let size = isMobile ? 40 : 100;
@@ -29,40 +30,29 @@ export default function SidebarProfile({
     return size;
   };
 
-  const [expandMenu, setExpandMenu] = useState<boolean>(false);
-
-  const hideNavbar = () => {
-    setExpandMenu(false);
-  };
-
   useEffect(() => {
-    if (expandMenu) {
+    if (openMenu) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [expandMenu]);
+  }, [openMenu]);
 
   return (
-    // <MenuContext.Provider value={{ hideNavbar }}>
     <div
       className={clsx(
-        "z-20 fixed shadow-sm sm:shadow-none lg:border-none dark:border-b dark:border-neutral-800 bg-light dark:bg-dark lg:!bg-transparent w-full p-5 lg:relative lg:p-0",
-        expandMenu && "pb-0"
+        "z-20 fixed shadow-sm sm:shadow-none lg:border-none border-b border-b-foreground-100 w-full p-5 lg:relative lg:p-0 dark:bg-black bg-white",
+        openMenu && "pb-0"
       )}
     >
       <div className="flex items-start justify-between lg:flex-col lg:space-y-4 md:px-2">
-        <SidebarProfileHeader
-          expandMenu={expandMenu}
-          imageSize={getImageSize()}
-        />
+        <SidebarProfileHeader openMenu={openMenu} imageSize={getImageSize()} />
 
         {!isMobile && (
-          <div className="flex items-center w-full justify-between py-[10.5px]">
+          <div className="hidden lg:py-[5px] md:flex md:justify-between md:items-center">
             <DropdownSwitchTheme />
           </div>
         )}
@@ -70,24 +60,23 @@ export default function SidebarProfile({
         {isMobile && (
           <div
             className={clsx(
-              "flex lg:hidden items-center gap-5 mt-2",
-              expandMenu &&
-                "!items-end flex-col-reverse justify-between h-[120px] pb-1"
+              "flex lg:hidden items-center gap-5 mt-1",
+              openMenu &&
+                "!items-end flex-col-reverse justify-between h-[120px] mb-2"
             )}
           >
-            {/* <ThemeToggleButton /> */}
-            {/* <MobileMenuButton
-                expandMenu={expandMenu}
-                setExpandMenu={setExpandMenu}
-              /> */}
+            <DropdownIconSwitchTheme />
+            <SidebarMobileMenuButton
+              openMenu={openMenu}
+              setOpenMenu={setOpenMenu}
+            />
           </div>
         )}
       </div>
 
-      {/* {isMobile && (
-          <AnimatePresence>{expandMenu && <MobileMenu />}</AnimatePresence>
-        )} */}
+      {isMobile && (
+        <AnimatePresence>{openMenu && <SidebarMobileMenu />}</AnimatePresence>
+      )}
     </div>
-    // {/* </MenuContext.Provider> */}
   );
 }

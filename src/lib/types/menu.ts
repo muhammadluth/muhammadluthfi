@@ -1,4 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode, Dispatch, SetStateAction } from 'react';
+
+export type MenuUIContextProps = {
+    openMenu: boolean
+    setOpenMenu: Dispatch<SetStateAction<boolean>>
+}
 
 export type MenuItemProps = {
     id: number

@@ -38,17 +38,20 @@ const themeList: ThemesProps[] = [
   },
 ];
 
-export default function DropdownSwitchTheme() {
+export default function DropdownIconSwitchTheme() {
   const { theme, setTheme } = useTheme();
 
   const handleTheme = (selectedTheme: string) => {
     setTheme(selectedTheme);
   };
 
+  const currentTheme = themeList.find((item) => item.theme === theme);
   return (
     <Dropdown className="">
       <DropdownTrigger>
-        <Button variant="bordered">Setting Theme</Button>
+        <Button variant="bordered" isIconOnly size="sm">
+          {currentTheme?.icon}
+        </Button>
       </DropdownTrigger>
       <DropdownMenu
         variant="faded"

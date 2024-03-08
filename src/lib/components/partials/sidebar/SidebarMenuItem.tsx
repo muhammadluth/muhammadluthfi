@@ -4,8 +4,8 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsArrowRightShort as BsArrowRightShortIcon } from "react-icons/bs";
-// import { MenuContext } from "@/common/context/MenuContext";
 import { MenuItemProps } from "@/lib/types/menu";
+import { useMenuUIContext } from "@/lib/contexts/MenuUIContext";
 
 export default function SidebarMenuItem({
   name,
@@ -16,13 +16,14 @@ export default function SidebarMenuItem({
   children,
   hideIcon = false,
 }: Readonly<MenuItemProps>) {
-  //   const { hideNavbar } = useContext(MenuContext);
+  const menuUIContext = useMenuUIContext();
+  const { setOpenMenu } = menuUIContext;
+
   const [isHovered, setIsHovered] = useState(false);
   const isExternalUrl = link?.includes("http");
   const isHashLink = link === "#";
   const pathname = usePathname();
 
-  //   text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 hover:dark:text-neutral-300
   const activeClasses = `flex items-center gap-2 py-2 px-4 rounded-lg group ${
     pathname === link
       ? "bg-foreground-100"
@@ -30,7 +31,7 @@ export default function SidebarMenuItem({
   }`;
 
   const handleClick = () => {
-    // hideNavbar();
+    setOpenMenu(false);
     if (onClick) onClick();
   };
 
