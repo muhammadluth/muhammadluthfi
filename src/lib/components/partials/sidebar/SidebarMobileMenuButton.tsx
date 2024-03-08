@@ -20,6 +20,8 @@ export default function SidebarMobileMenuButton({
     <button
       className="flex lg:hidden sidebar-mobile-menu-button"
       onClick={handleOpenMenu}
+      aria-label="button setting theme"
+      type="button"
     >
       {menuSpanData.map((item) => (
         <span

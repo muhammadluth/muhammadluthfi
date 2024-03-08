@@ -46,9 +46,11 @@ export default function DropdownSwitchTheme() {
   };
 
   return (
-    <Dropdown className="">
+    <Dropdown>
       <DropdownTrigger>
-        <Button variant="bordered">Setting Theme</Button>
+        <Button variant="bordered" aria-label="button setting theme">
+          Setting Theme
+        </Button>
       </DropdownTrigger>
       <DropdownMenu
         variant="faded"

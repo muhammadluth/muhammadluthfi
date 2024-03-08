@@ -47,9 +47,14 @@ export default function DropdownIconSwitchTheme() {
 
   const currentTheme = themeList.find((item) => item.theme === theme);
   return (
-    <Dropdown className="">
+    <Dropdown>
       <DropdownTrigger>
-        <Button variant="bordered" isIconOnly size="sm">
+        <Button
+          variant="bordered"
+          isIconOnly
+          size="sm"
+          aria-label="button setting theme"
+        >
           {currentTheme?.icon}
         </Button>
       </DropdownTrigger>
