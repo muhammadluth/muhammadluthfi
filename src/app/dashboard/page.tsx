@@ -8,8 +8,7 @@ import { ContributionsData } from "@/lib/types/dashboard";
 const Dashboard = dynamic(() => import("@/lib/modules/dashboard"));
 
 const PAGE_TITLE = "Dashboard";
-const PAGE_DESCRIPTION =
-  "This is my personal dashboard, built with Next.js API routes deployed as serverless functions.";
+const PAGE_DESCRIPTION = "This is my personal dashboard.";
 
 export default async function DashboardPage() {
   const githubUserPersonal = await getGitHubUser(1);

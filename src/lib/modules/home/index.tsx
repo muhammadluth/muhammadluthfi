@@ -1,13 +1,13 @@
 import React from "react";
-import dynamic from "next/dynamic";
 import BreakLine from "@/lib/components/elements/BreakLine";
-
-const Introduction = dynamic(() => import("@/lib/modules/home/Introduction"));
+import Resume from "@/lib/modules/home/Resume";
+import Introduction from "@/lib/modules/home/Introduction";
 
 export default function Home() {
   return (
     <div>
       <Introduction />
+      <Resume />
       <BreakLine />
     </div>
   );

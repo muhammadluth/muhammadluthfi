@@ -52,7 +52,7 @@ export default function SidebarProfile({
         <SidebarProfileHeader openMenu={openMenu} imageSize={getImageSize()} />
 
         {!isMobile && (
-          <div className="hidden lg:py-[5px] md:flex md:justify-between md:items-center">
+          <div className="hidden lg:py-1 md:flex md:justify-between md:items-center">
             <DropdownSwitchTheme />
           </div>
         )}
