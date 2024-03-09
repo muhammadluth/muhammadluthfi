@@ -10,9 +10,9 @@ export default function Home() {
     <div>
       <Introduction />
       <Resume />
-      <BreakLine />
+      <BreakLine className="my-8" />
       <Career />
-      <BreakLine />
+      <BreakLine className="my-8" />
       <Education />
     </div>
   );
