@@ -3,8 +3,7 @@ import { HiOutlineBriefcase as HiOutlineBriefcaseIcon } from "react-icons/hi";
 import SectionHeading from "@/lib/components/elements/SectionHeading";
 import SectionSubHeading from "@/lib/components/elements/SectionSubHeading";
 import { CareerItems } from "@/lib/constants/career";
-
-import CareerCard from "./CareerCard";
+import CareerCard from "@/lib/modules/home/CareerCard";
 
 export default function Career() {
   return (

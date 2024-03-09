@@ -30,7 +30,7 @@ export default function CareerCard({
   }
 
   return (
-    <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900">
+    <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
           <div className="relative col-span-3">
