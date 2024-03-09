@@ -18,14 +18,14 @@ export default function EducationCard({
     <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
-          <div className="relative col-span-1">
+          <div className="relative col-span-4 sm:col-span-1">
             {logo ? (
               <Image src={logo} width={55} height={55} alt={school} />
             ) : (
               <BsBuildingsIcon size={50} />
             )}
           </div>
-          <div className="flex flex-col col-span-11 ml-5">
+          <div className="flex flex-col col-span-8 sm:col-span-11 ml-5">
             <div className="flex flex-col gap-2">
               <Link
                 href={school_website}
