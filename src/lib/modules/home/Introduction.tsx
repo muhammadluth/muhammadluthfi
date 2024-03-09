@@ -25,8 +25,8 @@ export default function Introduction() {
           I am an experienced Software Engineer, proficient in both Front-End
           and Back-End development, with a passion for creating fast and
           efficient platforms. I work with GoLang, JavaScript, and TypeScript,
-          specializing in banking and fintech systems. I enjoy collaborating
-          with teams to deliver the best results in a system.
+          specializing in payment systems. I enjoy collaborating with teams to
+          deliver the best results in a system.
         </p>
       </div>
     </section>

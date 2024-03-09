@@ -31,7 +31,7 @@ export default function Story() {
         used as one of the standardizations in transaction systems.`}
       </p>
       <p className="text-justify">
-        {`Furthermore, I have experience in developing Healthcare applications
+        {`Furthermore, I have experience in developing wellness applications
         developed by Sirka.`}
       </p>
     </section>
