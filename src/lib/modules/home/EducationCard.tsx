@@ -30,7 +30,7 @@ export default function EducationCard({
               <Link
                 href={school_website}
                 target="_blank"
-                data-umami-event={`Click Career Company Name: ${school}`}
+                data-umami-event={`Click Education School Name: ${school}`}
               >
                 <span className="hover:underline cursor-pointer">{school}</span>
               </Link>
