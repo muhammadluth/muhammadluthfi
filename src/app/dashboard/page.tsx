@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { getGitHubUser } from "@/lib/services/github";
+import { ContributionsData } from "@/lib/types/dashboard";
 import Container from "@/lib/components/elements/Container";
 import PageHeading from "@/lib/components/elements/PageHeading";
-import { ContributionsData } from "@/lib/types/dashboard";
 
 const Dashboard = dynamic(() => import("@/lib/modules/dashboard"));
 

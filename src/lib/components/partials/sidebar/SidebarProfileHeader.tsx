@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { IoLogoGithub as IoLogoGithubIcon } from "react-icons/io";
-import { MdVerified as MdVerifiedIcon } from "react-icons/md";
+import { RiFocus2Fill as RiFocus2FillIcon } from "react-icons/ri";
 import Image from "@/lib/components/elements/Image";
 
 interface ISidebarProfileHeader {
@@ -36,8 +36,15 @@ export default function SidebarProfileHeader({
             Muhammad Luthfi
           </h2>
         </Link>
-        <div>
-          <MdVerifiedIcon size={18} className="text-blue-400" />
+        <div className="relative flex">
+          <RiFocus2FillIcon
+            size={18}
+            className="text-success animate-ping absolute inline-flex opacity-75"
+          />
+          <RiFocus2FillIcon
+            size={18}
+            className="text-success relative inline-flex"
+          />
         </div>
       </div>
       <div className="hidden lg:flex text-sm  text-foreground-600 hover:text-foreground-700 dark:text-foreground-500 dark:hover:text-foreground-400 transition-all duration-300">
