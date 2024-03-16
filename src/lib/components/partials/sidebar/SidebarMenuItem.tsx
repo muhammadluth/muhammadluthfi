@@ -4,18 +4,18 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsArrowRightShort as BsArrowRightShortIcon } from "react-icons/bs";
-import { MenuItemProps } from "@/lib/types/menu";
+import { MenuItem } from "@/lib/types/menu";
 import { useMenuUIContext } from "@/lib/contexts/MenuUIContext";
 
 export default function SidebarMenuItem({
   name,
   link,
   icon,
-  onClick,
   className = "my-0.5",
   children,
   hideIcon = false,
-}: Readonly<MenuItemProps>) {
+  onClick,
+}: Readonly<MenuItem>) {
   const menuUIContext = useMenuUIContext();
   const { setOpenMenu } = menuUIContext;
 
