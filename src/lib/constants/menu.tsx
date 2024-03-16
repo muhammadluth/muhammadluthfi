@@ -4,11 +4,11 @@ import {
   HiOutlineUser as HiOutlineUserIcon,
   HiOutlinePresentationChartBar as HiOutlinePresentationChartBarIcon,
 } from "react-icons/hi";
-import { MenuItem } from "@/lib/types/menu";
+import { MenuData } from "@/lib/types/menu";
 
 const iconSize = 20;
 
-export const MenuItems: MenuItem[] = [
+export const MenuItemsData: MenuData[] = [
   {
     id: 1,
     name: "home",

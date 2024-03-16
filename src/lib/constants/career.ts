@@ -1,6 +1,6 @@
-import { CareerProps } from '@/lib/types/career';
+import { CareerData } from '@/lib/types/career';
 
-export const CareerItems: CareerProps[] = [
+export const CareerItemsData: CareerData[] = [
   {
     id: 1,
     position: 'Software Engineer',

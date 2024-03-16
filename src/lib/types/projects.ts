@@ -24,7 +24,7 @@ interface ImageData {
 }
 
 
-export interface ProjectItem {
+export interface ProjectData {
   id: number;
   attributes: {
     slug: string;

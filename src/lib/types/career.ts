@@ -1,4 +1,4 @@
-export interface CareerProps {
+export interface CareerData {
   id: number;
   position: string;
   company: string;

@@ -4,10 +4,10 @@ import { Card, Tooltip } from "@nextui-org/react";
 import { HiOutlineArrowSmRight as HiOutlineArrowSmRightIcon } from "react-icons/hi";
 import Image from "@/lib/components/elements/Image";
 import { getImages } from "@/lib/constants/strapi";
-import { ProjectItem } from "@/lib/types/projects";
+import { ProjectData } from "@/lib/types/projects";
 import { getIcons } from "@/lib/constants/icons";
 
-export default function ProjectCard({ id, attributes }: ProjectItem) {
+export default function ProjectCard({ id, attributes }: ProjectData) {
   return (
     <Link href={`/projects/${id}`}>
       <Card className="group relative border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%] shadow-sm">

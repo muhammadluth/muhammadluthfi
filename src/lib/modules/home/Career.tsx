@@ -2,7 +2,7 @@ import React from "react";
 import { HiOutlineBriefcase as HiOutlineBriefcaseIcon } from "react-icons/hi";
 import SectionHeading from "@/lib/components/elements/SectionHeading";
 import SectionSubHeading from "@/lib/components/elements/SectionSubHeading";
-import { CareerItems } from "@/lib/constants/career";
+import { CareerItemsData } from "@/lib/constants/career";
 import CareerCard from "@/lib/modules/home/CareerCard";
 
 export default function Career() {
@@ -21,7 +21,7 @@ export default function Career() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
-        {CareerItems?.map((career) => (
+        {CareerItemsData?.map((career) => (
           <CareerCard key={career.id} {...career} />
         ))}
       </div>

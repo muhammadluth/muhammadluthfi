@@ -1,4 +1,4 @@
-export interface EducationProps {
+export interface EducationData {
   id: number;
   school: string;
   major: string;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import { BsBuildings as BsBuildingsIcon } from "react-icons/bs";
 import { Card, CardBody } from "@nextui-org/react";
-import { CareerProps } from "@/lib/types/career";
+import { CareerData } from "@/lib/types/career";
 import Image from "@/lib/components/elements/Image";
 
 export default function CareerCard({
@@ -14,7 +14,7 @@ export default function CareerCard({
   start_date,
   end_date,
   company_website,
-}: Readonly<CareerProps>) {
+}: Readonly<CareerData>) {
   const startDate = dayjs(start_date);
   const endDate = end_date ? dayjs(end_date) : dayjs();
 

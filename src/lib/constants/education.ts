@@ -1,6 +1,6 @@
-import { EducationProps } from '@/lib/types/education';
+import { EducationData } from '@/lib/types/education';
 
-export const EducationItems: EducationProps[] = [
+export const EducationItemsData: EducationData[] = [
     {
         id: 1,
         school: 'Universitas Mercu Buana Yogyakarta',

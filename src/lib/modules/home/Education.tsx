@@ -2,7 +2,7 @@ import React from "react";
 import { TbSchool as TbSchoolIcon } from "react-icons/tb";
 import SectionHeading from "@/lib/components/elements/SectionHeading";
 import SectionSubHeading from "@/lib/components/elements/SectionSubHeading";
-import { EducationItems } from "@/lib/constants/education";
+import { EducationItemsData } from "@/lib/constants/education";
 import EducationCard from "@/lib/modules/home/EducationCard";
 
 export default function Education() {
@@ -19,7 +19,7 @@ export default function Education() {
       </div>
 
       <div className="grid md:grid-cols-1 gap-4">
-        {EducationItems?.map((item) => (
+        {EducationItemsData?.map((item) => (
           <EducationCard key={item.id} {...item} />
         ))}
       </div>

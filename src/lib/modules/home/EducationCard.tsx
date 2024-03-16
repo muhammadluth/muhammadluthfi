@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { BsBuildings as BsBuildingsIcon } from "react-icons/bs";
 import { Card, CardBody } from "@nextui-org/react";
-import { EducationProps } from "@/lib/types/education";
+import { EducationData } from "@/lib/types/education";
 import Image from "@/lib/components/elements/Image";
 
 export default function EducationCard({
@@ -13,7 +13,7 @@ export default function EducationCard({
   start_year,
   end_year,
   school_website,
-}: Readonly<EducationProps>) {
+}: Readonly<EducationData>) {
   return (
     <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
       <CardBody>

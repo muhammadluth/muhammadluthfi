@@ -5,7 +5,7 @@ export type MenuUIContextProps = {
     setOpenMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export type MenuItem = {
+export type MenuData = {
     id: number
     name: string;
     link: string;
