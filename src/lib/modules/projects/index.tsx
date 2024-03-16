@@ -1,37 +1,28 @@
-import React from "react";
-import { MdVerified as MdVerifiedIcon } from "react-icons/md";
-import { Tooltip } from "@nextui-org/react";
+import React, { Suspense } from "react";
+import { motion } from "framer-motion";
+import { getProjects } from "@/lib/services/strapi";
+import { ProjectItem } from "@/lib/types/projects";
+import ProjectCard from "@/lib/modules/projects/ProjectCard";
+import Loading from "@/lib/components/elements/Loading";
 
-export default function Projects() {
+export default async function Projects() {
+  const projects = await getProjects(10, 1);
   return (
-    <div>
-      <h1>PROJECTS</h1>
-      <Tooltip
-        content="I am a tooltip"
-        delay={0}
-        placement="top"
-        closeDelay={0}
-        motionProps={{
-          variants: {
-            exit: {
-              opacity: 0,
-              transition: {
-                duration: 0.1,
-                ease: "easeIn",
-              },
-            },
-            enter: {
-              opacity: 1,
-              transition: {
-                duration: 0.15,
-                ease: "easeOut",
-              },
-            },
-          },
-        }}
-      >
-        <MdVerifiedIcon size={18} className="text-blue-400" />
-      </Tooltip>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div className="grid sm:grid-cols-2 gap-5 pt-2 px-1">
+        {projects.data.map((project: ProjectItem) => (
+          // <motion.div
+          //   key={project.id}
+          //   initial={{ opacity: 0, scale: 0.8 }}
+          //   animate={{ opacity: 1, scale: 1 }}
+          //   transition={{ duration: 0.3, delay: project.id * 0.1 }}
+          // >
+          <div key={project.id}>
+            <ProjectCard {...project} />
+          </div>
+          // </motion.div>
+        ))}
+      </div>
+    </Suspense>
   );
 }

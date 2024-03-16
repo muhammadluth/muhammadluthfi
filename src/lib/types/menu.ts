@@ -5,17 +5,17 @@ export type MenuUIContextProps = {
     setOpenMenu: Dispatch<SetStateAction<boolean>>
 }
 
-export type MenuItemProps = {
+export type MenuItem = {
     id: number
     name: string;
     link: string;
     icon: JSX.Element;
     isShow?: boolean;
     isExternal: boolean;
-    onClick?: () => void;
     className?: string;
     children?: ReactNode;
     eventName?: string;
     hideIcon?: boolean;
     type?: string;
+    onClick?: () => void;
 };

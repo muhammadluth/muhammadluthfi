@@ -39,11 +39,11 @@ export default function SidebarProfileHeader({
         <div className="relative flex">
           <RiFocus2FillIcon
             size={18}
-            className="text-success animate-ping absolute inline-flex opacity-75"
+            className="text-green-500 animate-ping absolute inline-flex opacity-75"
           />
           <RiFocus2FillIcon
             size={18}
-            className="text-success relative inline-flex"
+            className="text-green-500 relative inline-flex"
           />
         </div>
       </div>

@@ -9,7 +9,7 @@ const PAGE_TITLE = "Projects";
 const PAGE_DESCRIPTION =
   "Several projects that I have worked on, both private and open source.";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={PAGE_TITLE} description={PAGE_DESCRIPTION} />

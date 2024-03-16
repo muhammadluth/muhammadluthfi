@@ -1,13 +1,44 @@
-export interface ProjectItemProps {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  link_demo?: string;
-  link_github?: string;
-  stacks: string;
-  content?: string;
-  is_show: boolean;
-  is_featured: boolean;
-  updated_at: Date;
+
+export type ProjectsUIContextProps = {
 }
+
+
+interface Pagination {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+export interface Meta {
+  pagination: Pagination;
+}
+
+
+
+interface ImageData {
+  id: number;
+  attributes: {
+    url: string;
+  }
+}
+
+
+export interface ProjectItem {
+  id: number;
+  attributes: {
+    slug: string;
+    title: string;
+    description: string | null;
+    images: {
+      data: ImageData[] | null;
+    };
+    link_demo: string;
+    link_repository: string;
+    stacks: string[] | null;
+    createdAt: string; // Assuming dates are represented as strings
+    updatedAt: string;
+    publishedAt: string;
+  };
+}
+
