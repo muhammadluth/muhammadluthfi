@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "@/lib/components/elements/Loading";
 import Story from "@/lib/modules/about/Story";
 
 export default function About() {
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       <Story />
-    </div>
+    </Suspense>
   );
 }
