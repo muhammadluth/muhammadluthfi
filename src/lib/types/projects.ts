@@ -31,7 +31,7 @@ export interface ProjectData {
     title: string;
     description: string | null;
     images: {
-      data: ImageData[] | null;
+      data: ImageData[];
     };
     link_demo: string;
     link_repository: string;
