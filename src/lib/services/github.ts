@@ -42,32 +42,3 @@ export const getGitHubUser = async (id: number) => {
   const response = await getGitHubContributionsData(username, token);
   return { account, contribution: response }
 };
-
-
-
-// export const getGitHubContributionsData = async (id: number) => {
-//   const account = GITHUB_ACCOUNTS.find(
-//     (account) => account.id === id
-//   );
-//   const response = await axios.post(
-//     GITHUB_API_GRAPHQL_BASE_URL,
-//     {
-//       query: GITHUB_USER_QUERY,
-//       variables: {
-//         username: account?.username
-//       }
-//     },
-//     {
-//       headers: {
-//         Authorization: `bearer ${account?.token}`
-//       }
-//     }
-//   )
-
-//   const status: number = response.status;
-//   const responseJson = response.data;
-//   if (status > 400) {
-//     return { status, data: {} };
-//   }
-//   return { status, data: responseJson.data.user };
-// }
