@@ -2,14 +2,8 @@
 import React, { ReactNode } from "react";
 import { SWRConfig } from "swr";
 
-interface SWRProviderProps {
-  children: ReactNode;
-  fallback?: any;
-}
+const cacheProvider = () => new Map();
 
-export function SWRProvider({
-  children,
-  fallback,
-}: Readonly<SWRProviderProps>) {
-  return <SWRConfig value={{ fallback }}>{children}</SWRConfig>;
+export function SWRProvider({ children }: any) {
+  return <SWRConfig value={{}}>{children}</SWRConfig>;
 }

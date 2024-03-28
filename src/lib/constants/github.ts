@@ -6,7 +6,7 @@ export const GITHUB_ACCOUNTS: GitHubConfigData[] = [
     id: 1,
     username: process.env.GITHUB_USERNAME,
     token: process.env.GITHUB_READ_USER_TOKEN_PERSONAL,
-    endpoint: '/api/github?type=personal',
+    endpoint: `/api/github/1/?type=personal`,
     type: 'personal',
     is_active: true
   }
