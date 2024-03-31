@@ -5,9 +5,7 @@ import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 
 const Layout = dynamic(() => import("@/lib/components/partials/layout"));
-const ThemeProvider = dynamic(
-  () => import("@/lib/components/elements/ThemeProvider")
-);
+const ThemeProvider = dynamic(() => import("@/lib/providers/ThemeProvider"));
 
 const poppins = Poppins({ subsets: ["latin"], weight: "300" });
 

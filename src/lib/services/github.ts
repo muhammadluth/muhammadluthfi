@@ -1,21 +1,19 @@
 import { GITHUB_API_GRAPHQL_BASE_URL, GITHUB_ACCOUNTS, GITHUB_USER_QUERY } from '@/lib/constants/github'
 
-
 export const getGitHubContributionsData = async (
   username: string | undefined,
   token: string | undefined
 ) => {
-  const headers = {
-    'content-type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  };
   const requestBody = {
     query: GITHUB_USER_QUERY,
     variables: { username }
   };
   const options = {
     method: 'POST',
-    headers,
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
     body: JSON.stringify(requestBody),
     next: { revalidate: 3600 }
   };

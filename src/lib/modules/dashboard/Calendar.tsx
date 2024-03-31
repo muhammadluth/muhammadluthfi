@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { Tooltip } from "@nextui-org/react";
 
 interface Contribution {
   date: string;
@@ -28,14 +29,6 @@ interface CalendarProps {
 }
 
 export default function Calendar({ data }: Readonly<CalendarProps>) {
-  const [selectContribution, setSelectContribution] = useState<{
-    count: number | null;
-    date: string | null;
-  }>({
-    count: null,
-    date: null,
-  });
-
   const weeks = data?.weeks ?? [];
   const months =
     data?.months?.map((month: Month) => {
@@ -60,9 +53,9 @@ export default function Calendar({ data }: Readonly<CalendarProps>) {
   const contributionColors = data?.colors ?? [];
 
   return (
-    <>
-      <div className="relative flex flex-col">
-        <ul className="flex justify-end gap-[2px] overflow-hidden text-xs md:justify-start">
+    <div className="overflow-x-auto whitespace-nowrap">
+      <div className="flex flex-col">
+        <ul className="flex justify-start gap-[3px] text-xs">
           {months.map((month) => (
             <li
               key={month.firstDay}
@@ -74,41 +67,39 @@ export default function Calendar({ data }: Readonly<CalendarProps>) {
           ))}
         </ul>
 
-        <div className="flex justify-start gap-[3px] overflow-hidden">
+        <div className="flex justify-start gap-[3px]">
           {weeks?.map((week) => (
             <div key={week.firstDay}>
               {week.contributionDays.map((contribution) => {
-                const backgroundColor =
-                  contribution.contributionCount > 0 && contribution.color;
-
+                const isExistsContribution = contribution.contributionCount > 0;
                 const getRandomDelayAnimate =
                   Math.random() * week.contributionDays.length * 0.15;
-
+                const tooltipText = `${contribution.contributionCount} contributions on ${contribution.date}`;
                 return (
-                  <motion.span
+                  <Tooltip
                     key={contribution.date}
-                    initial="initial"
-                    animate="animate"
-                    variants={{
-                      initial: { opacity: 0, translateY: -20 },
-                      animate: {
-                        opacity: 1,
-                        translateY: 0,
-                        transition: { delay: getRandomDelayAnimate },
-                      },
-                    }}
-                    className="my-[2px] block h-[12px] w-[12px] rounded-sm bg-foreground-200"
-                    style={backgroundColor ? { backgroundColor } : undefined}
-                    onMouseEnter={() =>
-                      setSelectContribution({
-                        count: contribution.contributionCount,
-                        date: contribution.date,
-                      })
-                    }
-                    onMouseLeave={() =>
-                      setSelectContribution({ count: null, date: null })
-                    }
-                  />
+                    content={tooltipText}
+                    placement="top"
+                  >
+                    <motion.span
+                      initial="initial"
+                      animate="animate"
+                      variants={{
+                        initial: { opacity: 0, translateY: -20 },
+                        animate: {
+                          opacity: 1,
+                          translateY: 0,
+                          transition: { delay: getRandomDelayAnimate },
+                        },
+                      }}
+                      className={`my-[2px] block h-[12px] w-[12px] rounded-sm bg-foreground-200`}
+                      style={{
+                        backgroundColor: isExistsContribution
+                          ? contribution.color
+                          : "",
+                      }}
+                    />
+                  </Tooltip>
                 );
               })}
             </div>
@@ -119,7 +110,7 @@ export default function Calendar({ data }: Readonly<CalendarProps>) {
         <div className="flex items-center gap-2 text-sm">
           <span>Less</span>
           <ul className="flex gap-1">
-            <motion.li className="h-[10px] w-[10px] rounded-sm bg-foreground-300" />
+            <motion.li className="h-[10px] w-[10px] rounded-sm bg-foreground-200" />
             {contributionColors.map((item, index) => (
               <motion.li
                 key={item}
@@ -139,17 +130,7 @@ export default function Calendar({ data }: Readonly<CalendarProps>) {
           </ul>
           <span>More</span>
         </div>
-
-        <div
-          className={clsx(
-            `${selectContribution?.date ? "opacity-100" : "opacity-0"}`,
-            "rounded px-2 text-sm bg-foreground-300"
-          )}
-        >
-          {selectContribution?.count} contributions on{" "}
-          {selectContribution?.date}
-        </div>
       </div>
-    </>
+    </div>
   );
 }
