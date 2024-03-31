@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import clsx from "clsx";
+import dayjs from "dayjs";
 import { motion } from "framer-motion";
-import { Tooltip } from "@nextui-org/react";
+import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 
 interface Contribution {
   date: string;
@@ -74,32 +75,39 @@ export default function Calendar({ data }: Readonly<CalendarProps>) {
                 const isExistsContribution = contribution.contributionCount > 0;
                 const getRandomDelayAnimate =
                   Math.random() * week.contributionDays.length * 0.15;
-                const tooltipText = `${contribution.contributionCount} contributions on ${contribution.date}`;
+                const tooltipText = `${
+                  contribution.contributionCount
+                } contributions on ${dayjs(contribution.date).format(
+                  "DD MMMM YYYY"
+                )}`;
                 return (
-                  <Tooltip
-                    key={contribution.date}
-                    content={tooltipText}
-                    placement="top"
-                  >
-                    <motion.span
-                      initial="initial"
-                      animate="animate"
-                      variants={{
-                        initial: { opacity: 0, translateY: -20 },
-                        animate: {
-                          opacity: 1,
-                          translateY: 0,
-                          transition: { delay: getRandomDelayAnimate },
-                        },
-                      }}
-                      className={`my-[2px] block h-[12px] w-[12px] rounded-sm bg-foreground-200`}
-                      style={{
-                        backgroundColor: isExistsContribution
-                          ? contribution.color
-                          : "",
-                      }}
-                    />
-                  </Tooltip>
+                  <Popover key={contribution.date} placement="top" showArrow>
+                    <PopoverTrigger>
+                      <motion.span
+                        initial="initial"
+                        animate="animate"
+                        variants={{
+                          initial: { opacity: 0, translateY: -20 },
+                          animate: {
+                            opacity: 1,
+                            translateY: 0,
+                            transition: { delay: getRandomDelayAnimate },
+                          },
+                        }}
+                        className={`my-[2px] block h-[12px] w-[12px] rounded-sm bg-foreground-200`}
+                        style={{
+                          backgroundColor: isExistsContribution
+                            ? contribution.color
+                            : "",
+                        }}
+                      />
+                    </PopoverTrigger>
+                    <PopoverContent>
+                      <div className="px-1 py-2">
+                        <div className="text-tiny font-bold">{tooltipText}</div>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
                 );
               })}
             </div>
