@@ -3,10 +3,12 @@ import { Tooltip } from "@nextui-org/react";
 import Image from "@/lib/components/elements/Image";
 import { ProjectData } from "@/lib/types/projects";
 import { getIcons } from "@/lib/constants/icons";
-import { getImages } from "@/lib/constants/strapi";
+import { getImage } from "@/lib/constants/strapi";
 import ProjectLink from "@/lib/modules/projects/ProjectLink";
 
-export default function ProjectDetail({ attributes }: Readonly<ProjectData>) {
+export default function ProjectDetail({
+  attributes: { title, images, stacks, link_demo, link_repository },
+}: Readonly<ProjectData>) {
   return (
     <div className="space-y-8">
       <div className="flex flex-col lg:flex-row items-start lg:items-center sm:flex-row gap-5 justify-between">
@@ -15,7 +17,7 @@ export default function ProjectDetail({ attributes }: Readonly<ProjectData>) {
             Tech Stack :
           </span>
           <div className="flex flex-wrap items-center gap-3">
-            {attributes.stacks?.map((stack) => (
+            {stacks?.map((stack) => (
               <Tooltip key={stack} content={stack}>
                 {getIcons(stack, 24)}
               </Tooltip>
@@ -23,16 +25,16 @@ export default function ProjectDetail({ attributes }: Readonly<ProjectData>) {
           </div>
         </div>
         <ProjectLink
-          title={attributes.title}
-          link_demo={attributes.link_demo}
-          link_repository={attributes.link_repository}
+          title={title}
+          link_demo={link_demo}
+          link_repository={link_repository}
         />
       </div>
       <Image
-        src={getImages(attributes.images.data[0].attributes.url)}
+        src={getImage(images.data[0].attributes.url)}
         width={800}
         height={400}
-        alt={attributes.title}
+        alt={title}
         className="hover:scale-105"
       />
     </div>

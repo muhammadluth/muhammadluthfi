@@ -1,25 +1,31 @@
 import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { BsBuildings as BsBuildingsIcon } from "react-icons/bs";
 import { Card, CardBody } from "@nextui-org/react";
 import { CareerData } from "@/lib/types/career";
 import Image from "@/lib/components/elements/Image";
+import { getImage } from "@/lib/constants/strapi";
 
 export default function CareerCard({
-  position,
-  company,
-  logo,
-  location,
-  start_date,
-  end_date,
-  company_website,
+  attributes: {
+    position,
+    company,
+    company_logo,
+    company_website,
+    company_location,
+    start_period,
+    end_period,
+  },
 }: Readonly<CareerData>) {
-  const startDate = dayjs(start_date);
-  const endDate = end_date ? dayjs(end_date) : dayjs();
+  const startPeriod = dayjs(start_period);
+  const endPeriod = dayjs(end_period);
 
-  const durationYears = endDate.diff(startDate, "years");
-  const durationMonths = endDate.diff(startDate, "months") % 12;
+  const durationYears = endPeriod.isValid()
+    ? endPeriod.diff(startPeriod, "years")
+    : dayjs().diff(startPeriod, "years");
+  const durationMonths = endPeriod.isValid()
+    ? endPeriod.diff(startPeriod, "months") % 12
+    : dayjs().diff(startPeriod, "months") % 12;
 
   let durationText = "";
   if (durationYears > 0) {
@@ -34,11 +40,12 @@ export default function CareerCard({
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
           <div className="relative col-span-3">
-            {logo ? (
-              <Image src={logo} width={55} height={55} alt={company} />
-            ) : (
-              <BsBuildingsIcon size={50} />
-            )}
+            <Image
+              src={getImage(company_logo.data.attributes.url)}
+              width={55}
+              height={55}
+              alt={company}
+            />
           </div>
           <div className="flex flex-col col-span-9">
             <div className="flex flex-col gap-2">
@@ -54,16 +61,18 @@ export default function CareerCard({
                   </span>
                 </Link>
                 <span className="text-foreground-300">•</span>
-                <span>{location}</span>
+                <span>{company_location}</span>
               </div>
               <div className="flex flex-col md:text-[13px]">
                 <div className="flex gap-1">
                   <span className="text-foreground-600">
-                    {startDate.format("MMM YYYY")}
-                  </span>{" "}
-                  -{" "}
+                    {startPeriod.format("MMM YYYY")}
+                  </span>
+                  <span className="mx-1">-</span>
                   <span className="text-foreground-600">
-                    {end_date ? endDate.format("MMM YYYY") : "Present"}
+                    {endPeriod.isValid()
+                      ? endPeriod.format("MMM YYYY")
+                      : "Present"}
                   </span>
                 </div>
                 <span className="text-neutral-500 dark:text-neutral-500">

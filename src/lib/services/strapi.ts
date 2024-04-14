@@ -37,3 +37,41 @@ export const getProjectsByID = async (id: number) => {
     }
     return { status, meta: responseBody.meta, data: responseBody.data };
 }
+
+
+export const getCareers = async () => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+        },
+        next: { revalidate: 3600 }
+    };
+    const response = await fetch(`${STRAPI_API_BASE_URL}/api/careers?populate[company_logo][fields][1]=url&sort[1]=end_period:desc`, options);
+    const status: number = await response.status;
+    const responseBody = await response.json();
+    if (status > 400) {
+        return { status, data: {} };
+    }
+    return { status, meta: responseBody.meta, data: responseBody.data };
+}
+
+
+export const getEducations = async () => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+        },
+        next: { revalidate: 3600 }
+    };
+    const response = await fetch(`${STRAPI_API_BASE_URL}/api/educations?populate[school_logo][fields][1]=url&sort[1]=end_period:desc`, options);
+    const status: number = await response.status;
+    const responseBody = await response.json();
+    if (status > 400) {
+        return { status, data: {} };
+    }
+    return { status, meta: responseBody.meta, data: responseBody.data };
+}

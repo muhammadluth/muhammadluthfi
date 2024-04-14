@@ -9,9 +9,10 @@ export default async function Projects() {
   return (
     <Suspense fallback={<Loading />}>
       <div className="grid sm:grid-cols-2 gap-5 pt-2 px-1">
-        {projects.data.map((project: ProjectData) => (
-          <ProjectCard key={project.id} {...project} />
-        ))}
+        {projects.status === 200 &&
+          projects.data.map((project: ProjectData) => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
       </div>
     </Suspense>
   );

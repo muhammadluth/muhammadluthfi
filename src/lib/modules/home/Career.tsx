@@ -1,11 +1,14 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { HiOutlineBriefcase as HiOutlineBriefcaseIcon } from "react-icons/hi";
+import { getCareers } from "@/lib/services/strapi";
 import SectionHeading from "@/lib/components/elements/SectionHeading";
 import SectionSubHeading from "@/lib/components/elements/SectionSubHeading";
-import { CareerItemsData } from "@/lib/constants/career";
 import CareerCard from "@/lib/modules/home/CareerCard";
+import Loading from "@/lib/components/elements/Loading";
+import { CareerData } from "@/lib/types/career";
 
-export default function Career() {
+export default async function Career() {
+  const careers = await getCareers();
   return (
     <section className="space-y-6">
       <div className="space-y-2">
@@ -20,11 +23,14 @@ export default function Career() {
         </SectionSubHeading>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
-        {CareerItemsData?.map((career) => (
-          <CareerCard key={career.id} {...career} />
-        ))}
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div className="grid md:grid-cols-2 gap-4">
+          {careers.status === 200 &&
+            careers.data?.map((career: CareerData) => (
+              <CareerCard key={career.id} {...career} />
+            ))}
+        </div>
+      </Suspense>
     </section>
   );
 }

@@ -1,29 +1,32 @@
 import React from "react";
 import Link from "next/link";
-import { BsBuildings as BsBuildingsIcon } from "react-icons/bs";
 import { Card, CardBody } from "@nextui-org/react";
 import { EducationData } from "@/lib/types/education";
+import { getImage } from "@/lib/constants/strapi";
 import Image from "@/lib/components/elements/Image";
 
 export default function EducationCard({
-  school,
-  major,
-  logo,
-  degree,
-  start_year,
-  end_year,
-  school_website,
+  attributes: {
+    school,
+    school_logo,
+    school_website,
+    degree,
+    major,
+    start_period,
+    end_period,
+  },
 }: Readonly<EducationData>) {
   return (
     <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
           <div className="relative col-span-4 sm:col-span-1">
-            {logo ? (
-              <Image src={logo} width={55} height={55} alt={school} />
-            ) : (
-              <BsBuildingsIcon size={50} />
-            )}
+            <Image
+              src={getImage(school_logo.data.attributes.url)}
+              width={55}
+              height={55}
+              alt={school}
+            />
           </div>
           <div className="flex flex-col col-span-8 sm:col-span-11 ml-5">
             <div className="flex flex-col gap-2">
@@ -44,8 +47,9 @@ export default function EducationCard({
                 </div>
                 <div className="flex flex-col md:text-[13px]">
                   <div className="flex gap-1">
-                    <span>{start_year}</span> -{" "}
-                    <span>{end_year ?? "Present"}</span>
+                    <span>{start_period}</span>
+                    <span className="mx-1">-</span>
+                    <span>{end_period ?? "Present"}</span>
                   </div>
                 </div>
               </div>

@@ -2,7 +2,6 @@
 export type ProjectsUIContextProps = {
 }
 
-
 interface Pagination {
   page: number;
   pageSize: number;
@@ -13,8 +12,6 @@ interface Pagination {
 export interface Meta {
   pagination: Pagination;
 }
-
-
 
 interface ImageData {
   id: number;
