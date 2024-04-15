@@ -8,7 +8,7 @@ export default function Resume() {
       href="https://cms.muhammadluthfi.id/uploads/CV_Muhammad_Luthfi_99de9ceb90.pdf"
       target="_blank"
       passHref
-      className="flex gap-2 hover:gap-3 transition-all duration-300 items-center text-neutral-600 dark:text-neutral-400 hover:text-neutral-700 hover:dark:text-neutral-300 mt-6 border border-neutral-400 hover:border-neutral-500 w-fit px-4 py-2.5 rounded-lg dark:border-neutral-600 hover:dark:border-neutral-300 dark:bg-neutral-900"
+      className="flex gap-2 hover:gap-3 transition-all duration-300 items-center text-foreground-900 hover:text-foreground-400 mt-6 border w-fit px-4 py-2.5 rounded-lg "
       data-umami-event="Download Resume"
     >
       <HiOutlineDownloadIcon />

@@ -13,7 +13,7 @@ export default function ProjectCard({
 }: Readonly<ProjectData>) {
   return (
     <Link href={`/projects/${id}`}>
-      <Card className="group relative border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%] shadow-sm">
+      <Card className="group relative border border-foreground-200 lg:hover:scale-[102%] shadow-sm">
         <div className="relative">
           <Image
             src={getImage(images.data[0].attributes.url)}
@@ -29,11 +29,11 @@ export default function ProjectCard({
         </div>
         <div className="p-5 space-y-2">
           <div className="flex justify-between">
-            <div className="text-lg font-sora cursor-pointer hover:underline text-neutral-700 dark:text-neutral-300 lg:group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-all duration-300">
+            <div className="text-lg font-sora cursor-pointer transition-all duration-300 hover:text-primary">
               {title}
             </div>
           </div>
-          <p className="text-neutral-700 dark:text-neutral-400 text-[15px] leading-relaxed">
+          <p className="text-foreground-500 text-[15px] leading-relaxed">
             {description}
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">

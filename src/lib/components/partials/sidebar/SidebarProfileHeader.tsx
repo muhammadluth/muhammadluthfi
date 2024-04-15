@@ -1,11 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { IoLogoGithub as IoLogoGithubIcon } from "react-icons/io";
-import { RiFocus2Fill as RiFocus2FillIcon } from "react-icons/ri";
 import Image from "@/lib/components/elements/Image";
 
-interface ISidebarProfileHeader {
+interface SidebarProfileHeaderProps {
   openMenu: boolean;
   imageSize: number;
   isScrolled?: boolean;
@@ -14,7 +12,7 @@ interface ISidebarProfileHeader {
 export default function SidebarProfileHeader({
   openMenu,
   imageSize,
-}: Readonly<ISidebarProfileHeader>) {
+}: Readonly<SidebarProfileHeaderProps>) {
   return (
     <div
       className={clsx(
@@ -29,7 +27,7 @@ export default function SidebarProfileHeader({
         width={openMenu ? 80 : imageSize}
         height={openMenu ? 80 : imageSize}
         rounded="rounded-full"
-        className="lg:hover:scale-105 border-2 border-neutral-400 dark:border-neutral-600"
+        className="lg:hover:scale-105 border-2 border-foreground-600"
       />
       <div className="flex gap-1 items-center lg:mt-4">
         <Link href="/" passHref>
@@ -37,25 +35,13 @@ export default function SidebarProfileHeader({
             Muhammad Luthfi
           </h2>
         </Link>
-        <div className="relative flex">
-          <RiFocus2FillIcon
-            size={18}
-            className="text-green-500 animate-ping absolute inline-flex opacity-75"
-          />
-          <RiFocus2FillIcon
-            size={18}
-            className="text-green-500 relative inline-flex"
-          />
-        </div>
       </div>
-      <div className="hidden lg:flex text-sm  text-foreground-600 hover:text-foreground-700 dark:text-foreground-500 dark:hover:text-foreground-400 transition-all duration-300">
+      <div className="hidden lg:flex text-sm transition-all duration-300 hover:text-primary">
         <Link
           href="https://github.com/muhammadluth"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1"
         >
-          <IoLogoGithubIcon size={18} />
           @muhammadluth
         </Link>
       </div>

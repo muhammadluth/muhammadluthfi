@@ -17,7 +17,7 @@ export default function EducationCard({
   },
 }: Readonly<EducationData>) {
   return (
-    <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
+    <Card className="flex items-center gap-5 py-4 px-6 border border-foreground-200 shadow-sm">
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
           <div className="relative col-span-4 sm:col-span-1">
@@ -37,14 +37,14 @@ export default function EducationCard({
                 target="_blank"
                 data-umami-event={`Click Education School Name: ${school}`}
               >
-                <span className="hover:underline cursor-pointer">{school}</span>
+                <span className="hover:text-primary cursor-pointer">
+                  {school}
+                </span>
               </Link>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400 space-y-2">
+              <div className="text-sm text-foreground-500 space-y-2">
                 <div className="flex flex-col md:flex-row gap-1 md:gap-2">
                   <span>{degree}</span>
-                  <span className="hidden md:flex text-neutral-300 dark:text-neutral-700">
-                    •
-                  </span>
+                  <span className="hidden md:flex">•</span>
                   <span>{major}</span>
                 </div>
                 <div className="flex flex-col md:text-[13px]">

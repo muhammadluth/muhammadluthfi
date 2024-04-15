@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Story() {
   return (
-    <section className="space-y-4 leading-[1.8] md:leading-loose text-neutral-800 dark:text-neutral-300">
+    <section className="space-y-4 leading-[1.8] md:leading-loose">
       <p className="text-justify">
         {`Hello! I'm Muhammad Luthfi, an experienced software engineer with over 6
         years of experience. I'm always seeking challenges and have a strong

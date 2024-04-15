@@ -10,7 +10,7 @@ export default function BreakLine({
 }: Readonly<BreakLineProps>) {
   return (
     <hr
-      className={`border-t dark:border-neutral-700 border-gray-300 my-4 ${className}`}
+      className={`border-t text-foreground-700 border-foreground-300 my-4 ${className}`}
       data-testid="breakline"
       {...props}
     />

@@ -3,19 +3,17 @@ import React, { ReactNode } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-interface ThemeProviderProps {
+interface ProvidersProps {
   children: ReactNode;
 }
 
-export default function ThemeProvider({
-  children,
-}: Readonly<ThemeProviderProps>) {
+export default function Providers({ children }: Readonly<ProvidersProps>) {
   return (
     <NextUIProvider>
       <NextThemesProvider
         attribute="class"
         defaultTheme="system"
-        themes={["system", "light", "dark"]}
+        themes={["light", "dark"]}
         enableSystem
         disableTransitionOnChange
       >

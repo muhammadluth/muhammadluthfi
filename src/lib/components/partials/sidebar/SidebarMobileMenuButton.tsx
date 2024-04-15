@@ -27,7 +27,7 @@ export default function SidebarMobileMenuButton({
         <span
           key={item.index}
           className={clsx(
-            "bg-neutral-950 dark:bg-neutral-100 sidebar-mobile-menu-button-content",
+            "bg-foreground-900 sidebar-mobile-menu-button-content",
             openMenu && "active"
           )}
         />

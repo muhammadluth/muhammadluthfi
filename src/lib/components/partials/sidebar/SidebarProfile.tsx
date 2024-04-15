@@ -2,21 +2,21 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
+import { RiFocus2Fill as RiFocus2FillIcon } from "react-icons/ri";
 import { useMenuUIContext } from "@/lib/contexts/MenuUIContext";
 import useIsMobile from "@/lib/hooks/useIsMobile";
-import DropdownSwitchTheme from "@/lib/components/elements/DropdownSwitchTheme";
-import DropdownIconSwitchTheme from "@/lib/components/elements/DropdownIconSwitchTheme";
+import ToggleThemeIcon from "@/lib/components/elements/ToggleThemeIcon";
 import SidebarProfileHeader from "@/lib/components/partials/sidebar/SidebarProfileHeader";
 import SidebarMobileMenuButton from "@/lib/components/partials/sidebar/SidebarMobileMenuButton";
 import SidebarMobileMenu from "@/lib/components/partials/sidebar/SidebarMobileMenu";
 
-interface ISidebarProfile {
+interface SidebarProfileProps {
   isScrolled?: boolean;
 }
 
 export default function SidebarProfile({
   isScrolled = false,
-}: Readonly<ISidebarProfile>) {
+}: Readonly<SidebarProfileProps>) {
   const isMobile = useIsMobile();
   const menuUIContext = useMenuUIContext();
 
@@ -44,7 +44,7 @@ export default function SidebarProfile({
   return (
     <div
       className={clsx(
-        "z-20 fixed shadow-sm sm:shadow-none lg:border-none border-b border-b-foreground-100 w-full p-5 lg:relative lg:p-0 dark:bg-black bg-white",
+        "z-20 fixed shadow-sm sm:shadow-none lg:border-none border-b border-b-foreground-100 w-full p-5 lg:relative lg:p-0 bg-background text-foreground-900",
         openMenu && "pb-0"
       )}
     >
@@ -52,8 +52,17 @@ export default function SidebarProfile({
         <SidebarProfileHeader openMenu={openMenu} imageSize={getImageSize()} />
 
         {!isMobile && (
-          <div className="hidden lg:py-1 md:flex md:justify-between md:items-center">
-            <DropdownSwitchTheme />
+          <div className="hidden lg:py-1 md:flex md:justify-between md:items-center gap-2">
+            <RiFocus2FillIcon
+              size={18}
+              className="text-green-500 animate-ping absolute inline-flex opacity-75"
+            />
+            <RiFocus2FillIcon
+              size={18}
+              className="text-green-500 relative inline-flex"
+            />
+            <span className="text-sm">Open for collabs!</span>
+            <ToggleThemeIcon />
           </div>
         )}
 
@@ -65,7 +74,7 @@ export default function SidebarProfile({
                 "!items-end flex-col-reverse justify-between h-[120px] mb-2"
             )}
           >
-            <DropdownIconSwitchTheme />
+            <ToggleThemeIcon />
             <SidebarMobileMenuButton
               openMenu={openMenu}
               setOpenMenu={setOpenMenu}

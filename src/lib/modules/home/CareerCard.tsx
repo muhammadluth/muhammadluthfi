@@ -36,7 +36,7 @@ export default function CareerCard({
   }
 
   return (
-    <Card className="flex items-center gap-5 py-4 px-6 border border-neutral-300 dark:border-neutral-900 shadow-sm">
+    <Card className="flex items-center gap-5 py-4 px-6 border border-foreground-200 shadow-sm">
       <CardBody>
         <div className="grid grid-cols-12 gap-2 items-center justify-center">
           <div className="relative col-span-3">
@@ -58,7 +58,7 @@ export default function CareerCard({
                   target="_blank"
                   data-umami-event={`Click Career Company Name: ${company}`}
                 >
-                  <span className="hover:underline cursor-pointer text-md">
+                  <span className="hover:text-primary cursor-pointer text-md">
                     {company}
                   </span>
                 </Link>
@@ -77,9 +77,7 @@ export default function CareerCard({
                       : "Present"}
                   </span>
                 </div>
-                <span className="text-neutral-500 dark:text-neutral-500">
-                  ~ {durationText}
-                </span>
+                <span className="text-foreground-400">( {durationText} )</span>
               </div>
             </div>
           </div>

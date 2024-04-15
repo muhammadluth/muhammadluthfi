@@ -3,9 +3,9 @@ import React from "react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
+import Providers from "@/lib/providers/Providers";
 
 const Layout = dynamic(() => import("@/lib/components/partials/layout"));
-const ThemeProvider = dynamic(() => import("@/lib/providers/ThemeProvider"));
 
 const poppins = Poppins({ subsets: ["latin"], weight: "300", preload: true });
 
@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeProvider>
+        <Providers>
           <Layout>{children}</Layout>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -25,7 +25,7 @@ export default function ProjectLink({
         />
       )}
       {link_repository && link_demo && (
-        <span className="text-neutral-400 dark:text-neutral-600">|</span>
+        <span className="text-foreground-400">|</span>
       )}
       {link_demo && (
         <LinkComponent
@@ -54,9 +54,9 @@ function LinkComponent({
   const eventName = `Click ${text} - Project ${title}`;
   return (
     <Link href={url} target="_blank" passHref data-umami-event={eventName}>
-      <div className="flex gap-2 items-center font-medium text-neutral-700 dark:text-neutral-300 ">
+      <div className="flex gap-2 items-center font-medium">
         {icon}
-        <span className="text-[15px] dark:text-teal-500 hover:dark:text-teal-400 transition-all duration-300">
+        <span className="text-[15px] hover:text-primary transition-all duration-300">
           {text}
         </span>
       </div>

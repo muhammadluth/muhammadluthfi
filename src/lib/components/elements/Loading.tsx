@@ -1,9 +1,15 @@
 import React from "react";
 import { Spinner } from "@nextui-org/react";
 
-export default function Loading() {
+interface LoadingProps {
+  className?: string;
+}
+
+export default function Loading({
+  className = "h-[30vh]",
+}: Readonly<LoadingProps>) {
   return (
-    <div className="h-[30vh] flex justify-center items-center">
+    <div className={`flex justify-center items-center ${className}`}>
       <Spinner color="current" />
     </div>
   );

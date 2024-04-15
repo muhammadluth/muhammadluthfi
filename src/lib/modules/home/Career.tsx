@@ -17,13 +17,11 @@ export default async function Career() {
           icon={<HiOutlineBriefcaseIcon className="mr-1" />}
         />
         <SectionSubHeading>
-          <p className="dark:text-neutral-400">
-            My professional career journey.
-          </p>
+          <p className="text-foreground-500">My professional career journey.</p>
         </SectionSubHeading>
       </div>
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading className="h-[10vh]" />}>
         <div className="grid md:grid-cols-2 gap-4">
           {careers.status === 200 &&
             careers.data?.map((career: CareerData) => (

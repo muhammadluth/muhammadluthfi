@@ -17,11 +17,11 @@ export default async function Education() {
           icon={<TbSchoolIcon size={22} className="mr-1" />}
         />
         <SectionSubHeading>
-          <p className="dark:text-neutral-400">My educational journey.</p>
+          <p className="text-foreground-500">My educational journey.</p>
         </SectionSubHeading>
       </div>
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading className="h-[10vh]" />}>
         <div className="grid md:grid-cols-1 gap-4">
           {educations.status === 200 &&
             educations.data?.map((education: EducationData) => (
