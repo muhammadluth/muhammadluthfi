@@ -33,7 +33,7 @@ export interface ProjectData {
     link_demo: string;
     link_repository: string;
     stacks: string[] | null;
-    createdAt: string; // Assuming dates are represented as strings
+    createdAt: string;
     updatedAt: string;
     publishedAt: string;
   };

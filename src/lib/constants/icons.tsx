@@ -14,10 +14,6 @@ export const getIcons = (name: string, size: number) => {
     <SiTailwindcssIcon size={size} className="text-[#38bdf8]" />
   );
   icons.set(
-    "TailwindCSS",
-    <SiTailwindcssIcon size={size} className="text-[#38bdf8]" />
-  );
-  icons.set(
     "TypeScript",
     <SiTypescriptIcon size={size} className="text-[#3178c6]" />
   );

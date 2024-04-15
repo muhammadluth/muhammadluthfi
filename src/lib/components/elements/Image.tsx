@@ -1,15 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import clsx from "clsx";
-import NextImage, { ImageProps } from "next/image";
+import NextImage, { ImageProps as NextImageProps } from "next/image";
 
 import clsxMerge from "@/lib/utils/clsxMerge";
 
-type TImage = {
+type ImageProps = {
   rounded?: string;
-} & ImageProps;
+  priority?: boolean;
+} & NextImageProps;
 
-export default function Image(props: Readonly<TImage>) {
+export default function Image(props: Readonly<ImageProps>) {
   const { alt, src, className, rounded, ...rest } = props;
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -33,7 +34,6 @@ export default function Image(props: Readonly<TImage>) {
         src={src}
         alt={alt}
         loading="lazy"
-        // priority={true}
         quality={100}
         onLoad={() => setIsLoading(false)}
         {...rest}
