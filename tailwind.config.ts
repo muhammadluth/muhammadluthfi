@@ -20,6 +20,29 @@ const config: Config = {
       fontFamily: {
         'roboto-condensed': ['var(--robotoCondensed-fon)']
       },
+      keyframes: {
+        wave: {
+          '0%': { transform: 'rotate(0.0deg)' },
+          '10%': { transform: 'rotate(14deg)' },
+          '20%': { transform: 'rotate(-8deg)' },
+          '30%': { transform: 'rotate(14deg)' },
+          '40%': { transform: 'rotate(-4deg)' },
+          '50%': { transform: 'rotate(10.0deg)' },
+          '60%': { transform: 'rotate(0.0deg)' },
+          '100%': { transform: 'rotate(0.0deg)' },
+        },
+        fluttering: {
+          '0%': { transform: 'translateY(0) rotate(-5deg)' },
+          '25%': { transform: 'translateY(-2px) rotate(0deg)' },
+          '50%': { transform: 'translateY(0) rotate(5deg)' },
+          '75%': { transform: 'translateY(2px) rotate(0deg)' },
+          '100%': { transform: 'translateY(0) rotate(-5deg)' },
+        },
+      },
+      animation: {
+        'waving-hand': 'wave 2s linear infinite',
+        'flag-fluttering': 'fluttering 2s linear infinite;',
+      }
     },
   },
   plugins: [nextui()],

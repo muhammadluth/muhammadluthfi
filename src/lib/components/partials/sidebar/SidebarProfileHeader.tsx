@@ -23,6 +23,7 @@ export default function SidebarProfileHeader({
       )}
     >
       <Image
+        priority
         src="/images/logo.webp"
         alt="Muhammad Luthfi"
         width={openMenu ? 80 : imageSize}

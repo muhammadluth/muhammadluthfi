@@ -7,7 +7,7 @@ import { Poppins } from "next/font/google";
 const Layout = dynamic(() => import("@/lib/components/partials/layout"));
 const ThemeProvider = dynamic(() => import("@/lib/providers/ThemeProvider"));
 
-const poppins = Poppins({ subsets: ["latin"], weight: "300" });
+const poppins = Poppins({ subsets: ["latin"], weight: "300", preload: true });
 
 export const metadata: Metadata = {
   title: "Muhammad Luthfi | Home",

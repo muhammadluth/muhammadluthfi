@@ -44,6 +44,8 @@ export default function CareerCard({
               src={getImage(company_logo.data.attributes.url)}
               width={55}
               height={55}
+              loading="lazy"
+              className="h-auto w-auto"
               alt={company}
             />
           </div>

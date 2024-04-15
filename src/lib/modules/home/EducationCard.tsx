@@ -25,7 +25,9 @@ export default function EducationCard({
               src={getImage(school_logo.data.attributes.url)}
               width={55}
               height={55}
+              loading="lazy"
               alt={school}
+              className="h-auto w-auto"
             />
           </div>
           <div className="flex flex-col col-span-8 sm:col-span-11 ml-5">

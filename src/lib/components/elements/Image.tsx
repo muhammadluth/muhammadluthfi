@@ -33,7 +33,6 @@ export default function Image(props: Readonly<ImageProps>) {
         )}
         src={src}
         alt={alt}
-        loading="lazy"
         quality={100}
         onLoad={() => setIsLoading(false)}
         {...rest}
