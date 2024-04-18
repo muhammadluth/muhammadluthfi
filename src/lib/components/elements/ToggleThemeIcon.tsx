@@ -77,7 +77,7 @@ export default function ToggleThemeIcon() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
     >
-      {resolvedTheme === "light" ? <RxSunIcon /> : <RxMoonIcon />}
+      {resolvedTheme === "light" ? <RxMoonIcon /> : <RxSunIcon />}
     </motion.button>
   );
 }
