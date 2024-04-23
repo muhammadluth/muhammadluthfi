@@ -5,7 +5,7 @@ import { HiOutlineDownload as HiOutlineDownloadIcon } from "react-icons/hi";
 export default function Resume() {
   return (
     <Link
-      href="https://cms.muhammadluthfi.id/uploads/CV_Muhammad_Luthfi_7b6b1cf5fa.pdf"
+      href="https://cms.muhammadluthfi.id/uploads/CV_Muhammad_Luthfi_6a653573ea.pdf"
       target="_blank"
       passHref
       className="flex gap-2 hover:gap-3 transition-all duration-300 items-center text-foreground-900 hover:text-foreground-400 mt-6 border w-fit px-4 py-2.5 rounded-lg "
