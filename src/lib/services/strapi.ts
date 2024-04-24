@@ -8,7 +8,7 @@ export const getProjects = async (limit: number, page: number) => {
             'content-type': 'application/json',
             Authorization: `Bearer ${STRAPI_API_TOKEN}`,
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 1800 }
     };
     const response = await fetch(`${STRAPI_API_BASE_URL}/api/projects?populate[images][fields][1]=url&pagination[pageSize]=${limit}&pagination[page]=${page}`, options);
     const status: number = await response.status;
@@ -27,7 +27,7 @@ export const getProjectsByID = async (id: number) => {
             'content-type': 'application/json',
             Authorization: `Bearer ${STRAPI_API_TOKEN}`,
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 1800 }
     };
     const response = await fetch(`${STRAPI_API_BASE_URL}/api/projects/${id}?populate[images][fields][1]=url`, options);
     const status: number = await response.status;
@@ -46,7 +46,7 @@ export const getCareers = async () => {
             'content-type': 'application/json',
             Authorization: `Bearer ${STRAPI_API_TOKEN}`,
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 1800 }
     };
     const response = await fetch(`${STRAPI_API_BASE_URL}/api/careers?populate[company_logo][fields][1]=url&sort[1]=end_period:desc`, options);
     const status: number = await response.status;
@@ -65,7 +65,7 @@ export const getEducations = async () => {
             'content-type': 'application/json',
             Authorization: `Bearer ${STRAPI_API_TOKEN}`,
         },
-        next: { revalidate: 3600 }
+        next: { revalidate: 1800 }
     };
     const response = await fetch(`${STRAPI_API_BASE_URL}/api/educations?populate[school_logo][fields][1]=url&sort[1]=end_period:desc`, options);
     const status: number = await response.status;
