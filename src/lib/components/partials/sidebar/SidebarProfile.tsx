@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { AnimatePresence } from "framer-motion";
 import { RiFocus2Fill as RiFocus2FillIcon } from "react-icons/ri";
 import { useMenuUIContext } from "@/lib/contexts/MenuUIContext";
-import useIsMobile from "@/lib/hooks/useIsMobile";
+import useWidth from "@/lib/hooks/useWidth";
 import ToggleThemeIcon from "@/lib/components/elements/ToggleThemeIcon";
 import SidebarProfileHeader from "@/lib/components/partials/sidebar/SidebarProfileHeader";
 import SidebarMobileMenuButton from "@/lib/components/partials/sidebar/SidebarMobileMenuButton";
@@ -17,7 +17,7 @@ interface SidebarProfileProps {
 export default function SidebarProfile({
   isScrolled = false,
 }: Readonly<SidebarProfileProps>) {
-  const isMobile = useIsMobile();
+  const { isMobile } = useWidth();
   const menuUIContext = useMenuUIContext();
 
   const { openMenu, setOpenMenu } = menuUIContext;

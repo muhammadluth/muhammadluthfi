@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { MenuUIProvider } from "@/lib/contexts/MenuUIContext";
-import useIsMobile from "@/lib/hooks/useIsMobile";
+import useWidth from "@/lib/hooks/useWidth";
 import SidebarProfile from "@/lib/components/partials/sidebar/SidebarProfile";
 import SidebarMenu from "@/lib/components/partials/sidebar/SidebarMenu";
 import BreakLine from "@/lib/components/elements/BreakLine";
 
 export default function Sidebar() {
-  const isMobile = useIsMobile();
+  const { isMobile } = useWidth();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
