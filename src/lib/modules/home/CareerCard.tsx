@@ -35,10 +35,10 @@ export default function CareerCard({
   }
 
   return (
-    <Card className="group relative flex items-center gap-5 p-6 border border-foreground-800 shadow-md rounded-xl transition-all duration-300 hover:shadow-xl hover:border-foreground-300">
-      <CardBody>
-        <div className="grid grid-cols-12 gap-4 items-center">
-          <div className="relative col-span-4 sm:col-span-2 h-16 w-16 rounded-full overflow-hidden shadow-md flex items-center justify-center">
+    <Card className="group relative flex flex-col sm:flex-row items-center sm:items-start gap-5 p-6 border border-foreground-800 shadow-md rounded-xl transition-all duration-300 hover:shadow-xl hover:border-foreground-300">
+      <CardBody className="w-full">
+        <div className="grid sm:grid-cols-12 gap-4 items-center text-center sm:text-left">
+          <div className="relative col-span-1 sm:col-span-2 h-16 w-16 rounded-full overflow-hidden shadow-md flex items-center justify-center mx-auto sm:mx-0">
             <Image
               src={getImage(company_logo.url)}
               alt={company}
@@ -49,7 +49,7 @@ export default function CareerCard({
             />
           </div>
 
-          <div className="flex flex-col col-span-9 sm:col-span-10">
+          <div className="flex flex-col col-span-1 sm:col-span-10 items-center sm:items-start">
             <div className="flex flex-col gap-2">
               <Link
                 href={company_website}
@@ -61,7 +61,7 @@ export default function CareerCard({
                 </span>
               </Link>
               <div className="text-sm text-foreground-300 space-y-2">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                   <span className="font-medium text-foreground-500">
                     {position}
                   </span>
