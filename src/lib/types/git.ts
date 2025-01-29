@@ -1,4 +1,4 @@
-export interface GitHubConfigData {
+export interface GitConfigData {
     id: number;
     username: string | undefined;
     token: string | undefined;

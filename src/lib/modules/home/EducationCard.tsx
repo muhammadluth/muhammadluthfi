@@ -1,58 +1,75 @@
 import React from "react";
 import Link from "next/link";
+import dayjs from "dayjs";
 import { Card, CardBody } from "@nextui-org/react";
 import { EducationData } from "@/lib/types/education";
 import { getImage } from "@/lib/constants/strapi";
 import Image from "@/lib/components/elements/Image";
 
 export default function EducationCard({
-  attributes: {
-    school,
-    school_logo,
-    school_website,
-    degree,
-    major,
-    start_period,
-    end_period,
-  },
+  school,
+  school_logo,
+  school_website,
+  degree,
+  major,
+  start_period,
+  end_period,
+  school_location,
 }: Readonly<EducationData>) {
+  const startPeriod = dayjs(start_period);
+  const endPeriod = dayjs(end_period);
+
+  const durationYears = endPeriod.isValid()
+    ? endPeriod.diff(startPeriod, "years")
+    : dayjs().diff(startPeriod, "years");
+  const durationMonths = endPeriod.isValid()
+    ? endPeriod.diff(startPeriod, "months") % 12
+    : dayjs().diff(startPeriod, "months") % 12;
+
+  let durationText = "";
+  if (durationYears > 0) {
+    durationText += `${durationYears} Year${durationYears > 1 ? "s" : ""} `;
+  }
+  if (durationMonths > 0 || durationYears === 0) {
+    durationText += `${durationMonths} Month${durationMonths > 1 ? "s" : ""}`;
+  }
   return (
-    <Card className="flex items-center gap-5 py-4 px-6 border border-foreground-200 shadow-sm">
+    <Card className="group relative flex items-center gap-5 p-6 border border-foreground-800 shadow-md rounded-xl transition-all duration-300 hover:shadow-xl hover:border-foreground-300">
       <CardBody>
-        <div className="grid grid-cols-12 gap-2 items-center justify-center">
-          <div className="relative col-span-4 sm:col-span-1">
+        <div className="grid grid-cols-12 gap-4 items-center">
+          <div className="relative col-span-4 sm:col-span-2 h-16 w-16 rounded-full overflow-hidden shadow-md flex items-center justify-center">
             <Image
-              src={getImage(school_logo.data.attributes.url)}
-              width={55}
-              height={55}
-              loading="lazy"
+              src={getImage(school_logo.url)}
               alt={school}
-              className="h-auto w-auto"
+              width={64}
+              height={64}
+              className="object-cover rounded-full w-full h-full transition-all duration-300 group-hover:scale-105"
+              priority
             />
           </div>
-          <div className="flex flex-col col-span-8 sm:col-span-11 ml-5">
+
+          <div className="flex flex-col col-span-9 sm:col-span-10">
             <div className="flex flex-col gap-2">
               <Link
                 href={school_website}
                 target="_blank"
                 data-umami-event={`Click Education School Name: ${school}`}
               >
-                <span className="hover:text-primary cursor-pointer">
+                <span className="text-lg font-semibold hover:text-blue-400 transition-colors duration-300 cursor-pointer">
                   {school}
                 </span>
               </Link>
-              <div className="text-sm text-foreground-500 space-y-2">
-                <div className="flex flex-col md:flex-row gap-1 md:gap-2">
-                  <span>{degree}</span>
-                  <span className="hidden md:flex">•</span>
-                  <span>{major}</span>
+              <div className="text-sm text-foreground-300 space-y-2">
+                <div className="flex flex-wrap gap-2">
+                  <span className="font-medium text-foreground-500">
+                    {major}
+                  </span>
+                  <span className="hidden md:inline">•</span>
+                  <span className="text-foreground-500">{degree}</span>
                 </div>
-                <div className="flex flex-col md:text-[13px]">
-                  <div className="flex gap-1">
-                    <span>{start_period}</span>
-                    <span className="mx-1">-</span>
-                    <span>{end_period ?? "Present"}</span>
-                  </div>
+                <div className="text-foreground-500">{school_location}</div>
+                <div className="text-xs text-foreground-500">
+                  {start_period} - {end_period ?? "Present"} ({durationText})
                 </div>
               </div>
             </div>

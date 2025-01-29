@@ -15,27 +15,46 @@ export interface Meta {
 
 interface ImageData {
   id: number;
-  attributes: {
-    url: string;
-  }
+  documentId: string;
+  url: string;
+  formats: ImageDataFormats;
+}
+
+interface ImageDataFormats {
+  large: ImageDataDetail
+  small: ImageDataDetail
+  medium: ImageDataDetail
+  thumbnail: ImageDataDetail
+}
+
+
+interface ImageDataDetail {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+  sizeInBytes: number;
 }
 
 
 export interface ProjectData {
   id: number;
-  attributes: {
-    slug: string;
-    title: string;
-    description: string | null;
-    images: {
-      data: ImageData[];
-    };
-    link_demo: string;
-    link_repository: string;
-    stacks: string[] | null;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-  };
+  documentId: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  overview: string | null;
+  images: ImageData[];
+  link_demo: string;
+  link_repository: string;
+  stacks: string[] | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 }
 

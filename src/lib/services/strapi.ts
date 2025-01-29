@@ -29,7 +29,26 @@ export const getProjectsByID = async (id: number) => {
         },
         next: { revalidate: 1800 }
     };
-    const response = await fetch(`${STRAPI_API_BASE_URL}/api/projects/${id}?populate[images][fields][1]=url`, options);
+    const response = await fetch(`${STRAPI_API_BASE_URL}/api/projects/${id}?populate[images][fields][1]=formats`, options);
+    const status: number = await response.status;
+    const responseBody = await response.json();
+    if (status > 400) {
+        return { status, data: {} };
+    }
+    return { status, meta: responseBody.meta, data: responseBody.data };
+}
+
+
+export const getProjectsByDocumentID = async (documentId: string) => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+        },
+        next: { revalidate: 1800 }
+    };
+    const response = await fetch(`${STRAPI_API_BASE_URL}/api/projects/${documentId}?populate[images][fields][1]=formats`, options);
     const status: number = await response.status;
     const responseBody = await response.json();
     if (status > 400) {

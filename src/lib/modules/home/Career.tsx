@@ -22,7 +22,7 @@ export default async function Career() {
       </div>
 
       <Suspense fallback={<Loading className="h-[10vh]" />}>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-1 gap-4">
           {careers.status === 200 &&
             careers.data?.map((career: CareerData) => (
               <CareerCard key={career.id} {...career} />

@@ -16,6 +16,7 @@ export default async function DashboardPage() {
   const contributionsData: ContributionsData[] = [
     {
       id: 1,
+      type: "GITHUB",
       account: githubUserPersonal.account,
       contribution: githubUserPersonal.contribution,
     },

@@ -1,4 +1,8 @@
 import "@/lib/styles/globals.scss";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import React from "react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -20,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
         <Providers>
           <Layout>{children}</Layout>

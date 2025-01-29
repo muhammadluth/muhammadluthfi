@@ -1,7 +1,7 @@
-import { GitHubConfigData } from "@/lib/types/github"
+import { GitConfigData } from "@/lib/types/git"
 
 export const GITHUB_API_GRAPHQL_BASE_URL = process.env.GITHUB_API_GRAPHQL_BASE_URL || "https://api.github.com/graphql"
-export const GITHUB_ACCOUNTS: GitHubConfigData[] = [
+export const GITHUB_ACCOUNTS: GitConfigData[] = [
   {
     id: 1,
     username: process.env.GITHUB_USERNAME,

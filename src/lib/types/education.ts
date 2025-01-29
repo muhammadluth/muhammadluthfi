@@ -11,25 +11,44 @@ export interface Meta {
 
 interface ImageData {
   id: number;
-  attributes: {
-    url: string;
-  }
+  documentId: string;
+  url: string;
+  formats: ImageDataFormats;
 }
+
+interface ImageDataFormats {
+  large: ImageDataDetail
+  small: ImageDataDetail
+  medium: ImageDataDetail
+  thumbnail: ImageDataDetail
+}
+
+
+interface ImageDataDetail {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+  sizeInBytes: number;
+}
+
 
 
 export interface EducationData {
   id: number;
-  attributes: {
-    slug: string;
-    school: string;
-    school_logo: {
-      data: ImageData;
-    };
-    school_website: string;
-    school_location: string;
-    major: string;
-    degree: string;
-    start_period: string;
-    end_period: string
-  };
+  documentId: string;
+  slug: string;
+  school: string;
+  school_logo: ImageData;
+  school_website: string;
+  school_location: string;
+  major: string;
+  degree: string;
+  start_period: string;
+  end_period: string
 }

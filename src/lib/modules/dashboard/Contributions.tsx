@@ -3,12 +3,12 @@ import Link from "next/link";
 import { IoLogoGithub as IoLogoGithubIcon } from "react-icons/io";
 import SectionHeading from "@/lib/components/elements/SectionHeading";
 import SectionSubHeading from "@/lib/components/elements/SectionSubHeading";
-import { GitHubConfigData } from "@/lib/types/github";
+import { GitConfigData } from "@/lib/types/git";
 import Overview from "@/lib/modules/dashboard/Overview";
 import Calendar from "@/lib/modules/dashboard/Calendar";
 
 interface ContributionsProps {
-  account: GitHubConfigData;
+  account: GitConfigData;
   data: any;
 }
 

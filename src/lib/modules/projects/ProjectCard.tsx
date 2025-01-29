@@ -8,15 +8,17 @@ import { ProjectData } from "@/lib/types/projects";
 import { getIcons } from "@/lib/constants/icons";
 
 export default function ProjectCard({
-  id,
-  attributes: { title, description, images, stacks },
+  documentId,
+  title,
+  images,
+  stacks,
 }: Readonly<ProjectData>) {
   return (
-    <Link href={`/projects/${id}`}>
+    <Link href={`/projects/${documentId}`}>
       <Card className="group relative border border-foreground-200 lg:hover:scale-[102%] shadow-sm">
         <div className="relative">
           <Image
-            src={getImage(images.data[0].attributes.url)}
+            src={getImage(images[0].url)}
             width={400}
             height={200}
             alt={title}
@@ -33,9 +35,6 @@ export default function ProjectCard({
               {title}
             </div>
           </div>
-          <p className="text-foreground-500 text-[15px] leading-relaxed">
-            {description}
-          </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">
             {stacks?.map((stack) => (
               <Tooltip key={stack} content={stack}>

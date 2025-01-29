@@ -1,7 +1,8 @@
-import { GitHubConfigData } from "@/lib/types/github"
+import { GitConfigData } from "@/lib/types/git"
 
 export interface ContributionsData {
-    id: 1,
-    account: GitHubConfigData
+    id: number,
+    type: 'GITHUB' | 'GITLAB';
+    account: GitConfigData,
     contribution: any
 }

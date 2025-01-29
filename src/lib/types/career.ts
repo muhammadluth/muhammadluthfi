@@ -12,28 +12,48 @@ export interface Meta {
 
 interface ImageData {
   id: number;
-  attributes: {
-    url: string;
-  }
+  documentId: string;
+  url: string;
+  formats: ImageDataFormats;
 }
+
+interface ImageDataFormats {
+  large: ImageDataDetail
+  small: ImageDataDetail
+  medium: ImageDataDetail
+  thumbnail: ImageDataDetail
+}
+
+
+interface ImageDataDetail {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+  sizeInBytes: number;
+}
+
 
 
 export interface CareerData {
   id: number;
-  attributes: {
-    slug: string;
-    position: string;
-    company: string;
-    company_logo: {
-      data: ImageData;
-    };
-    company_website: string;
-    company_location: string;
-    industry: string;
-    work_system: string;
-    employee_status: string;
-    start_period: string;
-    end_period: string
-  };
+  documentId: string;
+  slug: string;
+  position: string;
+  company: string;
+  company_logo: ImageData;
+  company_website: string;
+  company_location: string;
+  industry: string;
+  work_system: string;
+  employee_status: string;
+  start_period: string;
+  end_period: string;
+  experience: string;
 }
 
