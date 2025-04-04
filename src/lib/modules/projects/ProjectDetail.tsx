@@ -81,7 +81,7 @@ export default function ProjectDetail({
         )}
       </div>
 
-      <div className="prose md:prose-md dark:prose-invert">
+      <div className="prose max-w-none dark:prose-invert">
         {mdxSource ? <MDXRemote {...mdxSource} /> : <p>Loading Content...</p>}
       </div>
     </div>

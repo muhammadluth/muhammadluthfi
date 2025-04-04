@@ -24,18 +24,18 @@ export default function Story({
 
   return (
     <section className="space-y-4 leading-[1.8] md:leading-loose">
-      <div className="prose md:prose-md dark:prose-invert text-justify">
+      <div className="prose max-w-none dark:prose-invert text-justify">
         <AboutMdx components={componentAboutMdx} />
       </div>
       <BreakLine className="my-8" />
-      <div className="prose md:prose-md dark:prose-invert text-justify grid gap-4">
+      <div className="prose max-w-none dark:prose-invert text-justify grid gap-4">
         <h2>💼 Experience</h2>
         {careers.map((career: CareerData) => (
           <Experience key={career.id} {...career} />
         ))}
       </div>
       <BreakLine className="my-8" />
-      <div className="prose md:prose-md dark:prose-invert text-justify">
+      <div className="prose max-w-none dark:prose-invert text-justify">
         <GoalsMdx />
       </div>
     </section>
